@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Ledger</title>
+<meta name="description" content="Ledger reads your bank's transaction SMS on your phone and never sends them anywhere. There is no account and no server.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Ledger</p>
+    <hr class="rule">
+    <h1>Privacy Policy</h1>
+    <p class="lead">There is no Ledger account, no Ledger server and no sign-up. We do not
+      receive your transactions, your balances or your messages, because there is nowhere
+      for them to be sent.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <p class="meta">Last updated 7 September 2026.</p>
+
+  <p>Ledger is a personal expense tracker. It reads the transaction SMS your bank already
+    sends you, turns them into a spending record, and shows you where your money went.
+    <strong>Everything it works out, it works out on your phone.</strong></p>
+
+  <h2>What Ledger reads</h2>
+
+  <h3>Your SMS messages</h3>
+  <p>This is the app's core function. A bank transaction alert — "Rs 450 spent on card
+    XX1234 at …" — is the only record of a payment that exists on the phone, so reading it
+    is the only way to build a spending history without you typing in every purchase.</p>
+  <ul>
+    <li>Messages are read <strong>on the device</strong> and matched against a table of bank
+      message formats.</li>
+    <li>A message that matches becomes a transaction: date, amount, direction, account
+      last-four, merchant, category.</li>
+    <li>A message that does <strong>not</strong> match is discarded, with the one exception
+      described under “Reporting a message format”.</li>
+    <li>Ledger never reads your messages for any other purpose, never builds a contact graph
+      from them, and never transmits your message history to us or to anyone else.</li>
+  </ul>
+
+  <h3>Nothing else</h3>
+  <p>Ledger does not request contacts, location, camera, microphone, call logs, photos or
+    files. It contains <strong>no advertising SDK, no analytics SDK and no crash-reporting
+    SDK</strong>.</p>
+
+  <h2>Where your data lives</h2>
+  <p>In the app's private storage on your phone, and nowhere else by default.</p>
+  <table>
+    <tr><th>What</th><th>Where</th></tr>
+    <tr><td>Parsed transactions, categories, tags you apply</td><td>app private storage</td></tr>
+    <tr><td>Holdings you type in yourself</td><td>app private storage</td></tr>
+    <tr><td>Your app-lock PIN or password</td><td>stored <strong>hashed</strong>, never in the clear</td></tr>
+    <tr><td>Settings</td><td>app private storage</td></tr>
+  </table>
+  <p>Uninstalling Ledger deletes all of it. Android backup is disabled for this app, so it is
+    not copied into your Google account backup either.</p>
+
+  <h2>What leaves your phone</h2>
+  <p>Three things, and only three.</p>
+
+  <h3>1. Rule updates — a download, never an upload</h3>
+  <p>Once a day Ledger fetches a file of bank message formats over HTTPS from GitHub, so that
+    a bank which changes its wording is understood without waiting for an app update. It is a
+    plain file download. <strong>Nothing about you is sent with it.</strong> GitHub, as the
+    host, sees the network request in the ordinary way any website sees a visitor.</p>
+
+  <h3>2. Sync to your own computer — only if you set it up</h3>
+  <p>Ledger can pair with companion software running on <strong>your own computer, on your
+    own wifi</strong>. If, and only if, you pair it:</p>
+  <ul>
+    <li>Ledger sends your bank SMS to <strong>that machine</strong>, at an address you typed
+      in yourself.</li>
+    <li>It is your computer. It is not our server, and we never see the data.</li>
+    <li>The connection is plain HTTP because it is a local-network address; no certificate
+      authority issues certificates for <code>192.168.x.x</code>, so HTTPS is not available
+      for that hop. The traffic stays on your local network.</li>
+    <li>An unpaired install — which is every install until you deliberately pair one — sends
+      nothing anywhere.</li>
+  </ul>
+
+  <h3>3. A message format you choose to report</h3>
+  <p>If Ledger sees a message that looks financial but matches no known format, it can offer
+    to let you report it so the format can be added. This is <strong>never automatic</strong>.
+    You tap to share, you see exactly what will be sent, and before it is shown to you
+    <strong>every run of two or more digits is replaced with <code>x</code></strong> — so
+    amounts, dates, account numbers and reference numbers are destroyed, and only the shape of
+    the sentence survives. You then choose where to send it with your phone's own share
+    sheet.</p>
+
+  <h2>What we collect about you</h2>
+  <p>Nothing. We operate no server that receives your data, we have no account system, and we
+    cannot identify you. We hold no database of Ledger users, because there is no such
+    database.</p>
+
+  <h2>Who we share it with</h2>
+  <p>No one. Your data is not sold, rented, brokered or shared, because we do not have it.</p>
+
+  <h2>The app lock, honestly</h2>
+  <p>Ledger can require a PIN, password or fingerprint before it opens. The secret is stored
+    as a PBKDF2-HMAC-SHA256 hash with a random salt, so the PIN itself is not written down
+    anywhere.</p>
+  <div class="note">
+    Be clear about what that protects: it stops a person holding your unlocked phone from
+    opening the app. It is <strong>not</strong> disk encryption, and not a defence against
+    someone who takes the device apart or has root access — on such a phone the app's files
+    can be read regardless. Android's own device encryption and screen lock are what protect
+    you there, and Ledger's lock sits on top of them rather than replacing them.
+  </div>
+
+  <h2>Children</h2>
+  <p>Ledger is not directed at children and we do not knowingly process children's data.</p>
+
+  <h2>Your rights</h2>
+  <p>Because your data never leaves your device, you exercise every right directly and
+    immediately: view it in the app, change or delete any entry, or uninstall to erase all of
+    it at once. There is no request to make of us and no account to close. If you have paired
+    a computer, delete the files there too — they are on your machine, under your control.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, the date at the top changes with it, and the revised version will
+    be published at this address before the change takes effect.</p>
+
+  <h2>Contact</h2>
+  <p><a href="mailto:sandheep.p01@gmail.com">sandheep.p01@gmail.com</a></p>
+
+  <footer>
+    <a href="./">Ledger</a> · <a href="https://github.com/sandheepp/ledger">Source and releases</a>
+  </footer>
+</div>
+
+</body>
+</html>
