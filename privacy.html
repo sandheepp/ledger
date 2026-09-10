@@ -22,7 +22,7 @@
 
 <div class="wrap">
 
-  <p class="meta">Last updated 7 September 2026.</p>
+  <p class="meta">Last updated 10 September 2026.</p>
 
   <p>Ledger is a personal expense tracker. It reads the transaction SMS your bank already
     sends you, turns them into a spending record, and shows you where your money went.
@@ -71,16 +71,18 @@
     plain file download. <strong>Nothing about you is sent with it.</strong> GitHub, as the
     host, sees the network request in the ordinary way any website sees a visitor.</p>
 
-  <h3>2. Sync to your own computer — only if you set it up</h3>
-  <p>Ledger can pair with companion software running on <strong>your own computer, on your
-    own wifi</strong>. If, and only if, you pair it:</p>
+  <h3>2. Sync to a computer you control — only if you set it up</h3>
+  <p>Ledger can pair with companion software running on <strong>a machine you
+    control</strong> — a computer on your own wifi, or a server you rent and administer
+    yourself. If, and only if, you pair it:</p>
   <ul>
     <li>Ledger sends your bank SMS to <strong>that machine</strong>, at an address you typed
       in yourself.</li>
     <li>It is your computer. It is not our server, and we never see the data.</li>
-    <li>The connection is plain HTTP because it is a local-network address; no certificate
-      authority issues certificates for <code>192.168.x.x</code>, so HTTPS is not available
-      for that hop. The traffic stays on your local network.</li>
+    <li>On your own network the connection is plain HTTP, because no certificate authority
+      issues certificates for <code>192.168.x.x</code> and the traffic never leaves your
+      wifi. To any address outside it, Ledger uses <strong>HTTPS</strong> and will not send
+      your messages in the clear.</li>
     <li>An unpaired install — which is every install until you deliberately pair one — sends
       nothing anywhere.</li>
   </ul>
