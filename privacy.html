@@ -14,9 +14,9 @@
     <p class="eyebrow">Ledger</p>
     <hr class="rule">
     <h1>Privacy Policy</h1>
-    <p class="lead">There is no Ledger account, no Ledger server and no sign-up. We do not
-      receive your transactions, your balances or your messages, because there is nowhere
-      for them to be sent.</p>
+    <p class="lead">The Ledger app has no account and no sign-up: it reads your bank SMS on
+      your phone and sends them nowhere. If someone gives you a link to a hosted Ledger,
+      that is a separate thing, and this page says plainly what it does.</p>
   </div>
 </header>
 
@@ -97,9 +97,28 @@
     sheet.</p>
 
   <h2>What we collect about you</h2>
-  <p>Nothing. We operate no server that receives your data, we have no account system, and we
-    cannot identify you. We hold no database of Ledger users, because there is no such
-    database.</p>
+  <p><strong>From the app: nothing.</strong> It has no account, we operate no server it talks
+    to, and we cannot identify you. There is no database of app users because there is no
+    such database.</p>
+
+  <h2>If you were given a hosted Ledger</h2>
+  <p>Someone can run this software on a machine they control and give you an account on it.
+    That is <strong>not us</strong>, and it is a different privacy question — the person
+    running that machine holds your data and is responsible for it. On such an instance:</p>
+  <ul>
+    <li>You create a username and password. The password is stored <strong>hashed</strong>
+      (scrypt), never in the clear.</li>
+    <li>Your ledger is <strong>separate from every other account on that machine</strong> —
+      its own data, its own rebuilds, its own sync token. No account can read another's, and
+      that separation is enforced on the server rather than in the page.</li>
+    <li>Your bank SMS, statements and everything derived from them sit on <strong>that
+      person's machine</strong>. Ask them who can reach it and what their backups look like;
+      those are their answers to give, not ours.</li>
+    <li>Deleting your data means asking whoever runs it. There is no button here that
+      reaches their disk.</li>
+  </ul>
+  <p>If you would rather nobody hold your data at all, install the app instead: it needs no
+    account and no server, and this page's first section describes it.</p>
 
   <h2>Who we share it with</h2>
   <p>No one. Your data is not sold, rented, brokered or shared, because we do not have it.</p>
