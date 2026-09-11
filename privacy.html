@@ -22,7 +22,7 @@
 
 <div class="wrap">
 
-  <p class="meta">Last updated 10 September 2026.</p>
+  <p class="meta">Last updated 11 September 2026.</p>
 
   <p>Ledger is a personal expense tracker. It reads the transaction SMS your bank already
     sends you, turns them into a spending record, and shows you where your money went.
@@ -114,8 +114,16 @@
     <li>Your bank SMS, statements and everything derived from them sit on <strong>that
       person's machine</strong>. Ask them who can reach it and what their backups look like;
       those are their answers to give, not ours.</li>
-    <li>Deleting your data means asking whoever runs it. There is no button here that
-      reaches their disk.</li>
+    <li>You can <strong>delete it yourself</strong>. Profile &rarr; Close this account
+      removes your ledger and your sign-in together &mdash; the parsed transactions, the
+      statements and SMS you uploaded, your categorisations and the username. It asks for
+      your password rather than accepting the session you are already signed in with, and
+      there is no soft delete and no grace period: the files are removed from that machine's
+      disk. If a rebuild happens to be reading your data at that moment it will ask you to
+      try again in a few minutes.</li>
+    <li>What that button cannot speak for is the machine's <strong>backups</strong>. If the
+      person running it takes snapshots, a copy may survive in one until it ages out. That is
+      their answer to give, not ours &mdash; ask them.</li>
   </ul>
   <p>If you would rather nobody hold your data at all, install the app instead: it needs no
     account and no server, and this page's first section describes it.</p>
@@ -142,7 +150,8 @@
   <p>Because your data never leaves your device, you exercise every right directly and
     immediately: view it in the app, change or delete any entry, or uninstall to erase all of
     it at once. There is no request to make of us and no account to close. If you have paired
-    a computer, delete the files there too — they are on your machine, under your control.</p>
+    a computer, delete the files there too — they are on your machine, under your control. On a hosted instance, Close this account
+    under Profile does it for you.</p>
 
   <h2>Changes</h2>
   <p>If this policy changes, the date at the top changes with it, and the revised version will
