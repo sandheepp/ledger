@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — Ledger</title>
-<meta name="description" content="Ledger reads your bank's transaction SMS on your phone and never sends them anywhere. There is no account and no server.">
+<meta name="description" content="How Ledger reads your bank SMS on your phone, what stays on the device, and what signing in to a Ledger server actually means.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,19 +14,31 @@
     <p class="eyebrow">Ledger</p>
     <hr class="rule">
     <h1>Privacy Policy</h1>
-    <p class="lead">The Ledger app has no account and no sign-up: it reads your bank SMS on
-      your phone and sends them nowhere. If someone gives you a link to a hosted Ledger,
-      that is a separate thing, and this page says plainly what it does.</p>
+    <p class="lead">Ledger reads your bank's transaction SMS on your phone and works out your
+      spending there. The app is complete without an account. Signing in is optional, and if
+      you use it, your bank data is stored on the Ledger server you signed in to — this page
+      says plainly what that means.</p>
   </div>
 </header>
 
 <div class="wrap">
 
-  <p class="meta">Last updated 11 September 2026.</p>
+  <p class="meta">Last updated 22 September 2026.</p>
 
   <p>Ledger is a personal expense tracker. It reads the transaction SMS your bank already
     sends you, turns them into a spending record, and shows you where your money went.
-    <strong>Everything it works out, it works out on your phone.</strong></p>
+    <strong>Everything it works out, it works out on your phone.</strong> Parsing, categories,
+    splits, search, trends, the app lock and any holdings you type in yourself all run on the
+    device, with no network connection of any kind.</p>
+
+  <p><strong>There is an optional sign-in, and it is the whole privacy question.</strong>
+    Ledger can sign in to a machine running the companion Ledger server. That machine may be
+    the developer's hosted instance at <code>ledger.factorylens.in</code>, or one you run
+    yourself. It is off until you turn it on, it is not required for any feature above, and an
+    install that never signs in sends nothing anywhere except the daily rule download
+    described below. If you do sign in, your bank messages and statements are stored on that
+    machine, and <strong>whoever operates it can read them</strong> — for
+    <code>ledger.factorylens.in</code>, that is the developer of this app.</p>
 
   <h2>What Ledger reads</h2>
 
@@ -40,9 +52,9 @@
     <li>A message that matches becomes a transaction: date, amount, direction, account
       last-four, merchant, category.</li>
     <li>A message that does <strong>not</strong> match is discarded, with the one exception
-      described under “Reporting a message format”.</li>
-    <li>Ledger never reads your messages for any other purpose, never builds a contact graph
-      from them, and never transmits your message history to us or to anyone else.</li>
+      described under "Reporting a message format".</li>
+    <li>Ledger never reads your messages for any other purpose and never builds a contact
+      graph from them.</li>
   </ul>
 
   <h3>Nothing else</h3>
@@ -51,12 +63,14 @@
     SDK</strong>.</p>
 
   <h2>Where your data lives</h2>
-  <p>In the app's private storage on your phone, and nowhere else by default.</p>
+  <p>In the app's private storage on your phone. If you never sign in to a server, that is the
+    only place it ever is.</p>
   <table>
     <tr><th>What</th><th>Where</th></tr>
     <tr><td>Parsed transactions, categories, tags you apply</td><td>app private storage</td></tr>
-    <tr><td>Holdings you type in yourself</td><td>app private storage</td></tr>
-    <tr><td>Your app-lock PIN or password</td><td>stored <strong>hashed</strong>, never in the clear</td></tr>
+    <tr><td>Splits you record against a transaction</td><td>app private storage</td></tr>
+    <tr><td>Holdings you type in yourself</td><td>app private storage — never uploaded anywhere</td></tr>
+    <tr><td>Your app-lock PIN or password</td><td>stored <strong>hashed</strong>, never in the clear, never sent</td></tr>
     <tr><td>Settings</td><td>app private storage</td></tr>
   </table>
   <p>Uninstalling Ledger deletes all of it. Android backup is disabled for this app, so it is
@@ -68,73 +82,106 @@
   <h3>1. Rule updates — a download, never an upload</h3>
   <p>Once a day Ledger fetches a file of bank message formats over HTTPS from GitHub, so that
     a bank which changes its wording is understood without waiting for an app update. It is a
-    plain file download. <strong>Nothing about you is sent with it.</strong> GitHub, as the
-    host, sees the network request in the ordinary way any website sees a visitor.</p>
+    plain file download, and it is the app's <strong>only automatic connection to the public
+    internet</strong>. <strong>Nothing about you is sent with it.</strong> GitHub, as the
+    host, sees the network request in the ordinary way any website sees a visitor. The same
+    file also carries the version number of the newest published release, which is how the
+    app can tell you an update exists without asking anyone anything.</p>
 
-  <h3>2. Sync to a computer you control — only if you set it up</h3>
-  <p>Ledger can pair with companion software running on <strong>a machine you
-    control</strong> — a computer on your own wifi, or a server you rent and administer
-    yourself. If, and only if, you pair it:</p>
+  <h3>2. Signing in to a Ledger server — only if you choose to</h3>
+  <p>Two kinds of machine can be on the other end:</p>
   <ul>
-    <li>Ledger sends your bank SMS to <strong>that machine</strong>, at an address you typed
-      in yourself.</li>
-    <li>It is your computer. It is not our server, and we never see the data.</li>
-    <li>On your own network the connection is plain HTTP, because no certificate authority
-      issues certificates for <code>192.168.x.x</code> and the traffic never leaves your
-      wifi. To any address outside it, Ledger uses <strong>HTTPS</strong> and will not send
-      your messages in the clear.</li>
-    <li>An unpaired install — which is every install until you deliberately pair one — sends
-      nothing anywhere.</li>
+    <li><strong>The developer's hosted instance</strong> at <code>ledger.factorylens.in</code>,
+      which anyone can create an account on. It is run by the developer of this app on a
+      rented virtual machine.</li>
+    <li><strong>A machine you run yourself</strong> — a computer on your own wifi, or a server
+      you rent and administer — at an address you type in.</li>
   </ul>
+  <p>You sign in with a username and password. The app exchanges those for a sync token for
+    your account, and from then on it can upload on your behalf:</p>
+  <table>
+    <tr><th>Uploaded</th><th>Detail</th></tr>
+    <tr><td>Bank-looking SMS</td><td>Only messages that look like bank transaction alerts —
+      sent by a bank's sender ID, or carrying a rupee figure in the body. Personal messages,
+      chat and OTPs are not part of the export and never leave the phone. Both the messages
+      and the transactions read out of them are stored on the server.</td></tr>
+    <tr><td>Statements you pick</td><td>Bank, credit-card, investment or tax documents (PDF,
+      CSV, XLSX) chosen file by file in a picker. Nothing is uploaded that you did not
+      select.</td></tr>
+    <tr><td>Your corrections</td><td>Categories you change, splits you record, and the
+      planning and tax figures you type into the web app.</td></tr>
+    <tr><td>Your account</td><td>The username you chose, and your password stored
+      <strong>hashed</strong> (scrypt), never in the clear.</td></tr>
+  </table>
+  <div class="note">
+    Checked on a real 12,570-message inbox: 7,972 messages were sent as bank-looking, 4,598
+    were kept back on the phone, and none of the kept-back ones would have parsed as a
+    transaction.
+  </div>
+  <p><strong>Be clear about what this means.</strong> Whoever operates that machine can read
+    what is stored on it — your bank messages, your statements, your transaction history. For
+    <code>ledger.factorylens.in</code> that is the developer of this app. He does not sell it,
+    share it, advertise against it or feed it to anyone else, and there is no analytics or
+    tracking anywhere in the system; but he administers the machine it sits on, so he
+    <strong>can</strong> read it, and you should decide with that in mind. On a machine you run
+    yourself, the person who can read it is you.</p>
+  <p>Accounts on one machine are <strong>separate from one another</strong> — own data, own
+    rebuilds, own sync token — and that separation is enforced on the server rather than in the
+    page, so no account can read another's.</p>
+  <p>An install that never signs in sends nothing here at all.</p>
 
   <h3>3. A message format you choose to report</h3>
   <p>If Ledger sees a message that looks financial but matches no known format, it can offer
     to let you report it so the format can be added. This is <strong>never automatic</strong>.
     You tap to share, you see exactly what will be sent, and before it is shown to you
-    <strong>every run of two or more digits is replaced with <code>x</code></strong> — so
-    amounts, dates, account numbers and reference numbers are destroyed, and only the shape of
-    the sentence survives. You then choose where to send it with your phone's own share
-    sheet.</p>
+    <strong>every run of two or more digits is replaced with <code>x</code></strong>, every UPI
+    handle and email address is removed, and the name you are greeted by is replaced with
+    <code>&lt;name&gt;</code> — so amounts, dates, account numbers, reference numbers and your
+    name are destroyed, and only the shape of the sentence survives. From the phone you then
+    choose where to send it with your own share sheet. From a signed-in web session the masked
+    sample instead goes to the operator of that server, labelled with your username, so they
+    know which bank format to write.</p>
 
-  <h2>What we collect about you</h2>
-  <p><strong>From the app: nothing.</strong> It has no account, we operate no server it talks
-    to, and we cannot identify you. There is no database of app users because there is no
-    such database.</p>
-
-  <h2>If you were given a hosted Ledger</h2>
-  <p>Someone can run this software on a machine they control and give you an account on it.
-    That is <strong>not us</strong>, and it is a different privacy question — the person
-    running that machine holds your data and is responsible for it. On such an instance:</p>
+  <h2>Transport</h2>
   <ul>
-    <li>You create a username and password. The password is stored <strong>hashed</strong>
-      (scrypt), never in the clear.</li>
-    <li>Your ledger is <strong>separate from every other account on that machine</strong> —
-      its own data, its own rebuilds, its own sync token. No account can read another's, and
-      that separation is enforced on the server rather than in the page.</li>
-    <li>Your bank SMS, statements and everything derived from them sit on <strong>that
-      person's machine</strong>. Ask them who can reach it and what their backups look like;
-      those are their answers to give, not ours.</li>
-    <li>You can <strong>delete it yourself</strong>. Profile &rarr; Close this account
-      removes your ledger and your sign-in together &mdash; the parsed transactions, the
-      statements and SMS you uploaded, your categorisations and the username. It asks for
-      your password rather than accepting the session you are already signed in with, and
-      there is no soft delete and no grace period: the files are removed from that machine's
-      disk. If a rebuild happens to be reading your data at that moment it will ask you to
-      try again in a few minutes.</li>
-    <li>What that button cannot speak for is the machine's <strong>backups</strong>. If the
-      person running it takes snapshots, a copy may survive in one until it ages out. That is
-      their answer to give, not ours &mdash; ask them.</li>
+    <li><code>ledger.factorylens.in</code> is <strong>HTTPS</strong>, with a certificate from
+      Let's Encrypt. So is the daily rule download.</li>
+    <li>A server on your own network is reached over plain <strong>HTTP</strong>, because no
+      certificate authority issues certificates for an address like <code>192.168.x.x</code>
+      and the traffic never leaves your wifi. Ledger decides this from the address itself:
+      private, <code>.local</code> and loopback addresses stay HTTP; <strong>anything else is
+      forced to HTTPS</strong>, because the body of that request is your bank SMS and it is
+      about to cross other people's networks.</li>
   </ul>
-  <p>If you would rather nobody hold your data at all, install the app instead: it needs no
-    account and no server, and this page's first section describes it.</p>
+
+  <h2>How long it is kept, and how to delete it</h2>
+  <p>On your phone: until you delete it or uninstall the app.</p>
+  <p>On a server you have signed in to: <strong>until you close the account.</strong> There is
+    no other expiry — the point of the thing is a spending history that goes back years.</p>
+  <p><strong>Closing the account is a button, and it is real.</strong> Profile &rarr; Close
+    this account removes your ledger and your sign-in together: the parsed transactions, the
+    SMS and statements you uploaded, your categorisations and the username. It asks for your
+    password rather than accepting the session you are already holding, because a borrowed
+    screen should not be able to delete somebody's ledger. There is no soft delete and no grace
+    period. If a rebuild happens to be reading your data at that moment it refuses and asks you
+    to try again in a few minutes. The operator can do the same from the machine's command line
+    if you ask them by message instead.</p>
+  <p>What that button cannot speak for is the machine's <strong>backups</strong>. If the
+    operator takes snapshots of the disk, a copy may survive in one until it ages out. Ask
+    them; on <code>ledger.factorylens.in</code>, ask the address at the bottom of this page.</p>
+  <p>If you would rather nobody hold your data at all, <strong>do not sign in</strong>. The app
+    is complete without it.</p>
 
   <h2>Who we share it with</h2>
-  <p>No one. Your data is not sold, rented, brokered or shared, because we do not have it.</p>
+  <p>No one. Your data is not sold, rented, brokered, shared with third parties or used for
+    advertising. There is no third party in the system: no analytics provider, no ad network,
+    no crash reporter, no data broker. The only parties are you, the app on your phone, and —
+    if you signed in — the operator of the machine you signed in to.</p>
 
   <h2>The app lock, honestly</h2>
   <p>Ledger can require a PIN, password or fingerprint before it opens. The secret is stored
     as a PBKDF2-HMAC-SHA256 hash with a random salt, so the PIN itself is not written down
-    anywhere.</p>
+    anywhere, and it is never sent off the device.</p>
   <div class="note">
     Be clear about what that protects: it stops a person holding your unlocked phone from
     opening the app. It is <strong>not</strong> disk encryption, and not a defence against
@@ -147,11 +194,14 @@
   <p>Ledger is not directed at children and we do not knowingly process children's data.</p>
 
   <h2>Your rights</h2>
-  <p>Because your data never leaves your device, you exercise every right directly and
-    immediately: view it in the app, change or delete any entry, or uninstall to erase all of
-    it at once. There is no request to make of us and no account to close. If you have paired
-    a computer, delete the files there too — they are on your machine, under your control. On a hosted instance, Close this account
-    under Profile does it for you.</p>
+  <p>If you have not signed in to a server, you exercise every right directly and immediately,
+    with no request to make of anyone: view your data in the app, change or delete any entry,
+    or uninstall to erase all of it at once. There is no account to close because you never
+    opened one.</p>
+  <p>If you have signed in, the same holds without having to ask: read everything in the app or
+    the web view, correct anything you disagree with, and Profile &rarr; Close this account
+    deletes the lot. For anything that button does not answer — a question about backups, or a
+    copy you think survived — write to the address below.</p>
 
   <h2>Changes</h2>
   <p>If this policy changes, the date at the top changes with it, and the revised version will
